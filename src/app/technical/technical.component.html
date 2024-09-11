@@ -1,0 +1,33 @@
+<div class="container">
+    <!-- Botón de menú para móviles -->
+    <div class="menu-toggle" (click)="toggleMenu()">
+      &#9776;
+    </div>
+  
+    <!-- Menú lateral -->
+    <nav class="sidenav" [ngClass]="{'sidenav-active': isMenuOpen}">
+      <div class="menu-header">
+        <img src="assets/img/logo-equipmed.png" alt="Logo" class="logo">
+        <span class="username">Usuario: {{ username }}</span>
+      </div>
+      <ul class="menu-items">
+        <li (click)="selectOption('home')">Inicio</li>
+        <li (click)="selectOption('profile')">Perfil</li>
+        <li (click)="selectOption('settings')">Configuración</li>
+        <li class="logout" (click)="logout()">Cerrar sesión</li>
+      </ul>
+    </nav>
+  
+    <!-- Contenido principal -->
+    <main class="content">
+      <div class="content-inner">
+        <ng-container [ngSwitch]="selectedOption">
+          <p *ngSwitchCase="'home'">Bienvenido a la página de inicio.</p>
+          <p *ngSwitchCase="'profile'">Este es tu perfil.</p>
+          <p *ngSwitchCase="'settings'">Aquí puedes cambiar tus configuraciones.</p>
+          <p *ngSwitchDefault>Selecciona una opción del menú.</p>
+        </ng-container>
+      </div>
+    </main>
+  </div>
+  
